@@ -1,7 +1,7 @@
 # FHIR Definition Language (FDL) POC
 
-This POC investigates and demonstrates how it is possible to create a custom Domain Specific Language (DSL) to allow HC
-Consultants to autonomously define FHIR resources mapping the keys of extracted documents. The POC is fairly complex,
+This POC investigates and demonstrates how it is possible to create a custom Domain Specific Language (DSL) to allow
+the definition of FHIR resources using a procedural definition language. The POC is fairly complex,
 but it is complete of unit and integration tests and should be "simple" to transition it to production code.
 
 ## FDL Grammar
