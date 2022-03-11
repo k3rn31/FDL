@@ -1,0 +1,43 @@
+// This FDL program contains a handful of statements with mixed FHIR resources, elements, FDL notations
+// and so on. The purpose is to test the FDL interpreter as much as possible in every supported
+// combination. This program does not contain errors, so it must produce a complete Bundle.
+
+// A patient with simplified notation
+Patient.name.family="Jacobs";
+Patient[0].name[0].given[0]="Lamont";
+Patient.name.given[1]="Marcel";
+Patient[0].birthDate="26 September 1994";
+Patient[0].active=("yes" as boolean); // type declaration
+
+// Second patient (Takeshi Kitano) standard notation
+Patient["neuropathic"].name=HumanName.family="北野";
+Patient["neuropathic"].name=HumanName.given[0]="武";
+Patient["neuropathic"].birthDate=("1947/18-1" as date => "yyyy/dd-M");
+Patient["neuropathic"].active="false";
+Patient["neuropathic"].contact.telecom.value="12345678";        // simplified notation
+Patient["neuropathic"].contact.telecom=ContactPoint.use="home"; // mixed with standard notation
+
+// An immunization with simplified notation
+Immunization[0].vaccineCode.text="AstraZeneca";
+Immunization[0].vaccineCode.coding=Coding.code="55423-8";
+Immunization[0].status="completed"; // required attribute
+
+// A goal proposed
+Goal.lifecycleStatus="proposed";
+Goal.description=CodeableConcept.text="Add additional eyes";
+Goal.target.measure=CodeableConcept.text="Number of eyes";
+Goal.target.detail="3"; // type inference
+
+// A goal completed with type definition
+Goal[1].lifecycleStatus="completed";
+Goal[1].description=CodeableConcept.text="Add additional fingers";
+Goal[1].target.measure=CodeableConcept.text="Number of fingers";
+Goal[1].target.detail=("7" as integer); // type declaration
+
+// An observation using type definition
+Observation.status="registered"; // required attribute
+Observation.value=Quantity.value=("11.2" as decimal); // type notation
+
+// An observation without type definition
+Observation[1].status="preliminary"; // required attribute
+Observation[1].value= Quantity.value="27.6"; // type inference

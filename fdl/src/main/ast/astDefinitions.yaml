@@ -1,0 +1,45 @@
+baseName: Expr
+types:
+  - name: Date
+    values:
+      - type: Object
+        name: value
+      - type: Object
+        name: format
+  - name: Element
+    values:
+      - type: Token
+        name: name
+      - type: Expr
+        name: matcher
+  - name: Get
+    values:
+      - type: Expr
+        name: object
+      - type: Token
+        name: name
+      - type: Expr
+        name: index
+  - name: Literal
+    values:
+      - type: Object
+        name: value
+      - type: Object
+        name: type
+  - name: Set
+    values:
+      - type: Expr
+        name: object
+      - type: Token
+        name: name
+      - type: Expr
+        name: value
+      - type: Expr
+        name: index
+---
+baseName: Stmt
+types:
+  - name: Expression
+    values:
+      - type: Expr
+        name: expression

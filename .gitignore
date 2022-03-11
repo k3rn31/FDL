@@ -1,0 +1,5 @@
+/.idea/
+/target/
+/**/target/
+.attach_*
+.gitconfig
